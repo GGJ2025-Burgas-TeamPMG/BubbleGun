@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2377240340430223364}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,9 +100,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7d99551150806a449efb009ff6d1be5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpForce: 10
-  groundCheckRadius: 0.2
+  moveSpeed: 10
+  jumpForce: 16
+  groundedMaterial: {fileID: 6200000, guid: b4758548a05918a40a00930fe8fda561, type: 2}
+  jumpingMaterial: {fileID: 6200000, guid: 86c6ab6f65b935047b4f164864632fe2, type: 2}
+  isGrounded: 0
+  groundCheckRadius: 0.9
   groundLayer:
     serializedVersion: 2
     m_Bits: 1
@@ -144,7 +147,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 4
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
