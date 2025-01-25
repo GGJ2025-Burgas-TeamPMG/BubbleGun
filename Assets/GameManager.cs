@@ -16,7 +16,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        // game init    
+        // game init
+        var ft = Camera.main.GetComponent<SmoothFollow>();
+        ft.target = player.transform;
     }
 
     public void LoadLevel(int sceneId)
