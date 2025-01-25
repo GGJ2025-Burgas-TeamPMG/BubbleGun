@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
@@ -9,6 +10,10 @@ public class Player : MonoBehaviour
     public float jumpForce = 10f; // Jump force
     public float aerialControl = 0.1f;
     public PhysicsMaterial2D groundedMaterial, jumpingMaterial;
+
+    private const float explosionStrengthDefault = 5f;
+    private float explosionStrength = explosionStrengthDefault;
+    public int explosionSize = 0;
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -32,6 +37,7 @@ public class Player : MonoBehaviour
         Move();
         Jump();
         UpdateAnimation();
+        ExploadingBalloonPress();
     }
 
     public float lastSpeed = 0f;
@@ -122,5 +128,62 @@ public class Player : MonoBehaviour
         // Visualize the ground check area in the editor
         Gizmos.color = Color.green;
         Gizmos.DrawSphere(transform.position, groundCheckRadius);
+    }
+
+    private void ExploadingBalloonPress()
+    {
+        if (Input.GetKey(KeyCode.K))
+        {
+            explosionStrength += Time.deltaTime * 15;
+            explosionSize = (int)Math.Ceiling(explosionStrength / 10);
+        }
+
+        else if (Input.GetKeyUp(KeyCode.K))
+        {
+            ExploadingBalloonDash(explosionSize);
+        }
+
+        if (explosionSize > 3)
+        {
+            ExploadingBalloonDash(explosionSize - 1);
+        }
+    }
+    private void ExploadingBalloonDash(int strength)
+    {
+        strength = strength * 10 + 13;
+        Vector2 direction = Vector2.zero;
+
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        {
+            direction = Vector2.right;
+        }
+        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        {
+            direction = Vector2.left;
+        }
+        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+        {
+            direction = Vector2.up;
+        }
+        else if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+        {
+            direction = Vector2.down;
+        }
+
+        else
+        {
+            if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Right"))
+            {
+                direction = Vector2.left;
+            }
+            else
+            {
+                direction = Vector2.right;
+            }
+        }
+
+        rb.velocity = rb.velocity/3 + direction*strength;
+        explosionStrength = explosionStrengthDefault;
+        explosionSize = 0;
     }
 }
