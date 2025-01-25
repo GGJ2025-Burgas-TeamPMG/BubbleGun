@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -9,13 +10,18 @@ public class Player : MonoBehaviour
     public float moveSpeed = 5f; // Speed of movement
     public float jumpForce = 10f; // Jump force
     public float aerialControl = 0.1f;
+    
+    [SerializeField] private float defaultAerialControl = 0.02f;
+    [SerializeField] private float defaultGravityScale = 4;
+    [SerializeField] private float defaultMoveSpeed = 10;
+
     public PhysicsMaterial2D groundedMaterial, jumpingMaterial;
 
     private const float explosionStrengthDefault = 5f;
     private float explosionStrength = explosionStrengthDefault;
     public int explosionSize = 0;
 
-    private Rigidbody2D rb;
+    [NonSerialized] public Rigidbody2D rb;
     private Animator anim;
     CapsuleCollider2D ownCapsule;
     CircleCollider2D gcCapsule;
@@ -23,6 +29,13 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float groundCheckRadius = 0.2f; // Radius for ground check
     [SerializeField] private LayerMask groundLayer; // Layer for ground detection
+
+    public void ResetControls(bool resetGravityScale = false, bool resetAerialControl = false, bool resetGroundControl = false)
+    {
+        if (resetGravityScale) rb.gravityScale = defaultGravityScale;
+        if (resetAerialControl) this.aerialControl = defaultAerialControl;
+        if(resetGroundControl) moveSpeed = defaultMoveSpeed;
+    }
 
     private void Awake()
     {
