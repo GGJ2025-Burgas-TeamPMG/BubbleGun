@@ -96,7 +96,7 @@ public class Player : MonoBehaviour
         this.isGrounded = isGrounded;
         rb.sharedMaterial = isGrounded ? groundedMaterial : jumpingMaterial;
 
-        if (Input.GetKey(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             anim.SetTrigger("Jump");
