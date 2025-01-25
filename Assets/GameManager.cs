@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [DefaultExecutionOrder(-20000)]
 public class GameManager : MonoBehaviour
@@ -18,5 +19,14 @@ public class GameManager : MonoBehaviour
         // game init    
     }
 
-   
+    public void LoadLevel(int sceneId)
+    {
+        SceneManager.LoadScene(sceneId);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
 }
