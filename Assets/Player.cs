@@ -1,14 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     public float moveSpeed = 5f; // Speed of movement
     public float jumpForce = 10f; // Jump force
+
+    public PhysicsMaterial2D groundedMaterial, jumpingMaterial;
+
     private Rigidbody2D rb;
     private Animator anim;
-    private bool isGrounded;
+    CapsuleCollider2D ownCapsule;
+    CircleCollider2D gcCapsule;
+    [SerializeField] private bool isGrounded;
 
     [SerializeField] private float groundCheckRadius = 0.2f; // Radius for ground check
     [SerializeField] private LayerMask groundLayer; // Layer for ground detection
@@ -17,6 +23,8 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        ownCapsule = GetComponent<CapsuleCollider2D>();
+        gcCapsule = GetComponentInChildren<CircleCollider2D>();
     }
 
     private void Update()
@@ -73,7 +81,20 @@ public class Player : MonoBehaviour
     private void Jump()
     {
         // Perform a circle cast to check if the player is grounded
-        isGrounded = Physics2D.OverlapCircle(transform.position, groundCheckRadius, groundLayer);
+        bool isGrounded = false;
+
+        Vector2 position = transform.GetChild(0).position + (Vector3) gcCapsule.offset;
+        float radius = gcCapsule.radius;
+        var hits = Physics2D.OverlapCircleAll(position, radius);
+
+        foreach (var h in hits)
+        {
+            if (h == ownCapsule) continue;
+            if(h == gcCapsule) continue;
+            isGrounded = true;
+        }
+        this.isGrounded = isGrounded;
+        rb.sharedMaterial = isGrounded ? groundedMaterial : jumpingMaterial;
 
         if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
@@ -84,10 +105,6 @@ public class Player : MonoBehaviour
 
     private void UpdateAnimation()
     {
-        // Update grounded animation state
-        anim.SetBool("isGrounded", isGrounded);
-
-        // Update speed animation based on horizontal velocity when grounded
         if (isGrounded)
         {
             anim.SetFloat("Speed", rb.velocity.x);
