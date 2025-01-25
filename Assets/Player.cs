@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     public float moveSpeed = 5f; // Speed of movement
     public float jumpForce = 10f; // Jump force
-
+    public float aerialControl = 0.1f;
     public PhysicsMaterial2D groundedMaterial, jumpingMaterial;
 
     private Rigidbody2D rb;
@@ -53,7 +53,8 @@ public class Player : MonoBehaviour
                 state = State.Walking;
                 anim.CrossFadeInFixedTime("PlayerLeft", 0f);
             }
-            rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
+            if (isGrounded) rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
+            else rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(-moveSpeed, rb.velocity.y), aerialControl);
         }
         else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
@@ -62,7 +63,8 @@ public class Player : MonoBehaviour
                 state = State.Walking;
                 anim.CrossFadeInFixedTime("PlayerRight", 0f);
             }
-            rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+            if (isGrounded) rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+            else rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(moveSpeed, rb.velocity.y), aerialControl);
         }
         else
         {
@@ -73,7 +75,7 @@ public class Player : MonoBehaviour
                 string n = h < 0 ? "PlayerIdleLeft" : "PlayerIdleRight";
                 anim.CrossFadeInFixedTime(n, 0f);
             }
-            rb.velocity = new Vector2(rb.velocity.x * 0.6f, rb.velocity.y);
+            if(isGrounded) rb.velocity = new Vector2(rb.velocity.x * 0.5f, rb.velocity.y);
         }
         lastSpeed = newSpeed;
     }
