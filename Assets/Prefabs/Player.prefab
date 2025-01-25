@@ -170,6 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   jumpForce: 16
+  aerialControl: 0.02
   groundedMaterial: {fileID: 6200000, guid: b4758548a05918a40a00930fe8fda561, type: 2}
   jumpingMaterial: {fileID: 6200000, guid: 86c6ab6f65b935047b4f164864632fe2, type: 2}
   isGrounded: 0
