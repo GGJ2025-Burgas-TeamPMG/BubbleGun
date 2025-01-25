@@ -177,8 +177,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2543412268637464009, guid: da412ebd4fd59a84e955f878f0c308c3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 960141064}
   m_SourcePrefab: {fileID: 100100000, guid: da412ebd4fd59a84e955f878f0c308c3, type: 3}
+--- !u!1 &960141063 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2543412268637464009, guid: da412ebd4fd59a84e955f878f0c308c3, type: 3}
+  m_PrefabInstance: {fileID: 960141062}
+  m_PrefabAsset: {fileID: 0}
+--- !u!210 &960141064
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960141063}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: -1
+  m_SortAtRoot: 0
 --- !u!1 &1848577794
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,8 +346,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5682625739100893764, guid: c601ad18fda40b5478309d950f59edea, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4868640193869971713}
   m_SourcePrefab: {fileID: 100100000, guid: c601ad18fda40b5478309d950f59edea, type: 3}
+--- !u!1 &4868640193869971712 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5682625739100893764, guid: c601ad18fda40b5478309d950f59edea, type: 3}
+  m_PrefabInstance: {fileID: 4868640193869971711}
+  m_PrefabAsset: {fileID: 0}
+--- !u!210 &4868640193869971713
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4868640193869971712}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1001 &7162905239444211175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -383,8 +423,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1813126267233110978, guid: 0200f3c5e3d75c2449922f37eccd3cc9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7162905239444211177}
   m_SourcePrefab: {fileID: 100100000, guid: 0200f3c5e3d75c2449922f37eccd3cc9, type: 3}
+--- !u!1 &7162905239444211176 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1813126267233110978, guid: 0200f3c5e3d75c2449922f37eccd3cc9, type: 3}
+  m_PrefabInstance: {fileID: 7162905239444211175}
+  m_PrefabAsset: {fileID: 0}
+--- !u!210 &7162905239444211177
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7162905239444211176}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1001 &8038669614764117713
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -440,8 +500,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5652323340364738707, guid: 94e4e9476a2f5174b977c94962891a06, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8038669614764117715}
   m_SourcePrefab: {fileID: 100100000, guid: 94e4e9476a2f5174b977c94962891a06, type: 3}
+--- !u!1 &8038669614764117714 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5652323340364738707, guid: 94e4e9476a2f5174b977c94962891a06, type: 3}
+  m_PrefabInstance: {fileID: 8038669614764117713}
+  m_PrefabAsset: {fileID: 0}
+--- !u!210 &8038669614764117715
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8038669614764117714}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
