@@ -27,16 +27,14 @@ public class EnemyBehaviour : MonoBehaviour
 
     public void Move()
     {
-        //Debug.Log("Moving");
+        // Called from ShouldMoveForward.cs
         if(this.facing == Facing.Left)
         {
             transform.position += Vector3.left * moveSpeed * Time.deltaTime;
-            Debug.Log("Moving left");
         }
         else
         {
             transform.position += Vector3.right * moveSpeed * Time.deltaTime;
-            Debug.Log("Moving right");
         }
     }
 }
