@@ -81,6 +81,7 @@ GameObject:
   - component: {fileID: 3839800161460396516}
   - component: {fileID: 6066171684629763848}
   - component: {fileID: 2377240340430223364}
+  - component: {fileID: 2852319893593422846}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -168,6 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7d99551150806a449efb009ff6d1be5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  facing: 1
   moveSpeed: 10
   jumpForce: 18
   aerialControl: 0.02
@@ -267,3 +269,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.06}
   m_Size: {x: 1.5, y: 2}
   m_Direction: 0
+--- !u!114 &2852319893593422846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899425059689480858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f10b964b30b04f446aabfe9f37dd0d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bubblePrefab: {fileID: 8366497043273451096, guid: 4785b075172be7043a10aa3011cb78d3, type: 3}
+  scale: {x: 0.3, y: 0.4}
+  velocityY: {x: 3, y: 8}
+  velocityX: {x: -3, y: 3}
+  fade: {x: 1, y: 3}
