@@ -45,6 +45,9 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if(health<=0)
         {
+            var bursts = GetComponentsInChildren<SoapBurst>();
+            foreach(var b in bursts)
+                b.BurstIntoBubbles(false);
             Destroy(transform.parent.gameObject);
         }
 
