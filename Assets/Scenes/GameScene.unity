@@ -178,10 +178,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainCamera
       objectReference: {fileID: 0}
-    - target: {fileID: 6281015525031377248, guid: abbbc3515c82cb34c97b85a1cf59d582, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8341131574539902649, guid: abbbc3515c82cb34c97b85a1cf59d582, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -225,10 +221,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5464057121839434006, guid: abbbc3515c82cb34c97b85a1cf59d582, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2125811029}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abbbc3515c82cb34c97b85a1cf59d582, type: 3}
 --- !u!1 &1464854281
 GameObject:
@@ -699,24 +692,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &2125811024 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5464057121839434006, guid: abbbc3515c82cb34c97b85a1cf59d582, type: 3}
-  m_PrefabInstance: {fileID: 408894445}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2125811029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2125811024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 627ff4ec45b6f3847847d825bd7c6c85, type: 2}
 --- !u!212 &114094167337151376
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2771,18 +2746,6 @@ PrefabInstance:
     - target: {fileID: 995163093666476111, guid: 0b5b2092f3f0e424a844ecbbc4f83dea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8362924546112191257, guid: 0b5b2092f3f0e424a844ecbbc4f83dea, type: 3}
-      propertyPath: m_Color.b
-      value: 0.83137256
-      objectReference: {fileID: 0}
-    - target: {fileID: 8362924546112191257, guid: 0b5b2092f3f0e424a844ecbbc4f83dea, type: 3}
-      propertyPath: m_Color.g
-      value: 0.83137256
-      objectReference: {fileID: 0}
-    - target: {fileID: 8362924546112191257, guid: 0b5b2092f3f0e424a844ecbbc4f83dea, type: 3}
-      propertyPath: m_Color.r
-      value: 0.83137256
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
