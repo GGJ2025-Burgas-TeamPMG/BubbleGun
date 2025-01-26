@@ -151,7 +151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627922eda31f0f74594dcd1d609b6444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 0}
 --- !u!4 &173748191
 Transform:
   m_ObjectHideFlags: 0
@@ -279,58 +278,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7837337585938942062, guid: fe2cafdb733effb46b7e71b1a9cfdb09, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 516987091}
-    - targetCorrespondingSourceObject: {fileID: 8454880227409816645, guid: fe2cafdb733effb46b7e71b1a9cfdb09, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 516987090}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe2cafdb733effb46b7e71b1a9cfdb09, type: 3}
---- !u!1 &516987088 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8454880227409816645, guid: fe2cafdb733effb46b7e71b1a9cfdb09, type: 3}
-  m_PrefabInstance: {fileID: 516987087}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &516987089 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7837337585938942062, guid: fe2cafdb733effb46b7e71b1a9cfdb09, type: 3}
-  m_PrefabInstance: {fileID: 516987087}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &516987090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 516987088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f10b964b30b04f446aabfe9f37dd0d8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bubblePrefab: {fileID: 8366497043273451096, guid: 4785b075172be7043a10aa3011cb78d3, type: 3}
-  scale: {x: 0.3, y: 0.4}
-  velocityY: {x: 3, y: 8}
-  velocityX: {x: -3, y: 3}
-  fade: {x: 1, y: 3}
---- !u!114 &516987091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 516987089}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f10b964b30b04f446aabfe9f37dd0d8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bubblePrefab: {fileID: 8366497043273451096, guid: 4785b075172be7043a10aa3011cb78d3, type: 3}
-  scale: {x: 0.3, y: 0.4}
-  velocityY: {x: 3, y: 8}
-  velocityX: {x: -3, y: 3}
-  fade: {x: 1, y: 3}
 --- !u!1 &1464854281
 GameObject:
   m_ObjectHideFlags: 0
