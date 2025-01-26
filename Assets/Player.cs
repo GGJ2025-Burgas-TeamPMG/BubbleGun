@@ -159,13 +159,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        // Visualize the ground check area in the editor
-        Gizmos.color = Color.green;
-        Gizmos.DrawSphere(transform.position, groundCheckRadius);
-    }
-
     private void ExploadingBalloonPress()
     {
         if (Input.GetKey(KeyCode.K))

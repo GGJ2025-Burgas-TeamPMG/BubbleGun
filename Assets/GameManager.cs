@@ -14,6 +14,11 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
+    public void KillPlayer()
+    {
+
+    }
+
     void Start()
     {
         // game init
