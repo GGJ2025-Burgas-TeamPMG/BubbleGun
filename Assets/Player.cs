@@ -28,6 +28,12 @@ public class Player : MonoBehaviour
     private float explosionStrength = explosionStrengthDefault;
     public int explosionSize = 0;
 
+    public double bubbleCooldown = 1;
+    private double endTimer = 0;
+    private double bubbleLifetime;
+    public float bubbleProjSpeed = 5;
+    public GameObject bubbleProjPrefab;
+
     [NonSerialized] public Rigidbody2D rb;
     private Animator anim;
     CapsuleCollider2D ownCapsule;
@@ -50,6 +56,8 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         ownCapsule = GetComponent<CapsuleCollider2D>();
         gcCapsule = GetComponentInChildren<CircleCollider2D>();
+
+        //bubbleProjPrefab = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -58,6 +66,7 @@ public class Player : MonoBehaviour
         Jump();
         UpdateAnimation();
         ExploadingBalloonPress();
+        BubbleAttackPress();
     }
 
     public float lastSpeed = 0f;
@@ -206,5 +215,34 @@ public class Player : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x / 2 + direction.x * strength, direction.y * strength + y);
         explosionStrength = explosionStrengthDefault;
         explosionSize = 0;
+    }
+    
+    GameObject spawnedBubbleProj;
+    public void BubbleAttackPress()
+    {
+
+        //Debug.Log($"{Time.timeAsDouble} - {endTimer}");
+        if (bubbleLifetime >= Time.timeAsDouble + 5)
+        {
+            Destroy(spawnedBubbleProj);
+        }
+        if (Input.GetKey(KeyCode.J) && Time.timeAsDouble >= endTimer)
+        {
+            bubbleLifetime = Time.timeAsDouble;
+            if(facing == Facing.Right)
+            {
+                spawnedBubbleProj = (GameObject)Instantiate(bubbleProjPrefab, transform.position + Vector3.right, transform.rotation);
+                spawnedBubbleProj.GetComponentInChildren<Rigidbody2D>().velocity = Vector3.right * bubbleProjSpeed;
+
+            }
+            else
+            {
+                spawnedBubbleProj = (GameObject)Instantiate(bubbleProjPrefab, transform.position + Vector3.left, transform.rotation);
+                spawnedBubbleProj.GetComponentInChildren<Rigidbody2D>().velocity = Vector3.left * bubbleProjSpeed;
+            }
+            
+            this.endTimer = Time.timeAsDouble + bubbleCooldown;
+        }
+        
     }
 }
