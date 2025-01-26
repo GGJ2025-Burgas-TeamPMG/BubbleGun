@@ -234,7 +234,6 @@ GameObject:
   - component: {fileID: 1536965261266651595}
   - component: {fileID: 8949166642370476934}
   - component: {fileID: 3749365922002997099}
-  - component: {fileID: 1885104672304785963}
   m_Layer: 0
   m_Name: EnemyRoot
   m_TagString: Untagged
@@ -345,6 +344,7 @@ GameObject:
   - component: {fileID: 2082230777396646166}
   - component: {fileID: 6902159974188262053}
   - component: {fileID: 6102998191175883620}
+  - component: {fileID: 3374457353111587040}
   m_Layer: 0
   m_Name: EnemyHead
   m_TagString: Untagged
@@ -454,13 +454,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1885104672304785963
+--- !u!114 &3374457353111587040
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8454880227409816645}
+  m_GameObject: {fileID: 8115927439607396342}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2846497df7640bf4980daa2b0430a94e, type: 3}
