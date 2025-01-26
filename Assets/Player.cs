@@ -195,7 +195,14 @@ public class Player : MonoBehaviour
             }
         }
 
-        rb.velocity = rb.velocity/3 + direction*strength;
+        float y = 0;
+
+        if (direction.y == 0)
+        {
+            y = rb.velocity.y + 5;
+        }
+
+        rb.velocity = new Vector2(rb.velocity.x / 2 + direction.x * strength, direction.y * strength + y);
         explosionStrength = explosionStrengthDefault;
         explosionSize = 0;
     }
