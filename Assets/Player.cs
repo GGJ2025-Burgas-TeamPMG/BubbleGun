@@ -7,6 +7,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+
+    public GameObject exploading_balloon;
+    
     public enum Facing
     {
         Left,
@@ -18,6 +21,8 @@ public class Player : MonoBehaviour
     public float jumpForce = 10f; // Jump force
     public float aerialControl = 0.1f;
     
+    private GameObject spawnedBalloonInflating = null;
+
     [SerializeField] private float defaultAerialControl = 0.02f;
     [SerializeField] private float defaultGravityScale = 4;
     [SerializeField] private float defaultMoveSpeed = 10;
@@ -156,24 +161,46 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.K))
         {
+            if (spawnedBalloonInflating == null)
+            {
+                spawnedBalloonInflating = Instantiate(exploading_balloon, transform.position, transform.rotation);
+            }
+            spawnedBalloonInflating.transform.position = transform.position;
             explosionStrength += Time.deltaTime * 15;
             explosionSize = (int)Math.Ceiling(explosionStrength / 10);
-        }
 
+            if (facing == Facing.Left)
+            {
+                spawnedBalloonInflating.transform.rotation = Quaternion.Euler(0, -180, 0);
+            }
+            else
+            {
+                spawnedBalloonInflating.transform.position += new Vector3(0, 0, 0);
+            }
+        }
+        
         else if (Input.GetKeyUp(KeyCode.K))
         {
+            explode_balloon();
             ExploadingBalloonDash(explosionSize);
         }
 
         if (explosionSize > 3)
         {
+            explode_balloon();
             ExploadingBalloonDash(explosionSize - 1);
         }
     }
+
+    private void explode_balloon()
+    {
+        Destroy(spawnedBalloonInflating);
+        spawnedBalloonInflating = null;
+    }
     private void ExploadingBalloonDash(int strength)
     {
-        strength = strength * 10 + 13;
-        Vector2 direction = Vector2.zero;
+        strength = strength * 10 + 10;
+        Vector2 direction;
 
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
@@ -186,7 +213,7 @@ public class Player : MonoBehaviour
 
         else
         {
-            if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Right"))
+            if (Facing.Right == facing)
             {
                 direction = Vector2.left;
             }
