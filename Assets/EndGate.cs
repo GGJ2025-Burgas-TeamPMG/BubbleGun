@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class End_Level : MonoBehaviour
+public class EndGate : MonoBehaviour
 {
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject == GameManager.player.gameObject)
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(3);
         }
 
     }
