@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7d99551150806a449efb009ff6d1be5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exploading_balloon: {fileID: 0}
   facing: 1
   moveSpeed: 10
   jumpForce: 18
@@ -179,6 +180,9 @@ MonoBehaviour:
   groundedMaterial: {fileID: 6200000, guid: b4758548a05918a40a00930fe8fda561, type: 2}
   jumpingMaterial: {fileID: 6200000, guid: 86c6ab6f65b935047b4f164864632fe2, type: 2}
   explosionSize: 0
+  bubbleCooldown: 1
+  bubbleProjSpeed: 5
+  bubbleProjPrefab: {fileID: 1065362772364294390, guid: f620892653d35864aa114b3841c7b17b, type: 3}
   isGrounded: 0
   groundCheckRadius: 0.9
   groundLayer:
