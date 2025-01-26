@@ -16,5 +16,6 @@ public class Menu_Script : MonoBehaviour
 
     void Quit(){
         Application.Quit();
+        EditorApplication.Exit(0);
     }
 }
