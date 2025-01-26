@@ -17,21 +17,29 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     private void Start()
     {
-        Instance = this;
-
-        var cam = GameObject.Find("MainCamera");
-        profile = cam.GetComponent<PostProcessingBehaviour>().profile;
+        Instance = this;        
         try
         {
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         }
         catch (Exception ex) { };
-        
+
+        var cam = GameObject.Find("MainCamera");
+        var ppb = cam.GetComponent<PostProcessingBehaviour>();
+        profile = Instantiate(ppb.profile);
+        ppb.profile = profile;
+
         // Fade
-        profile = Instantiate(profile);
+
         var colorGradingSettings = profile.colorGrading.settings;
-        colorGradingSettings.basic.postExposure = -40;
-        DOTween.To(() => colorGradingSettings.basic.postExposure, (x) => colorGradingSettings.basic.postExposure = x, 0, 2).SetEase(Ease.InCirc);
+        profile.colorGrading.settings = colorGradingSettings;
+
+        DOTween.To(
+            (x) => {
+                var sss = profile.colorGrading.settings;
+                sss.basic.postExposure = x;
+                profile.colorGrading.settings = sss;
+            }, -30f, 0f, 3).SetEase(Ease.OutCirc);
 
         // game init
         var ft = Camera.main.GetComponent<SmoothFollow>();
@@ -45,7 +53,13 @@ public class GameManager : MonoBehaviour
         playerWasKilled = true;
         StartCoroutine(ReapawnRoutine());
         var colorGradingSettings = profile.colorGrading.settings;
-        DOTween.To(() => colorGradingSettings.basic.postExposure, (x) => colorGradingSettings.basic.postExposure = x, -40, 1);
+        DOTween.To(
+            (x) => {
+                var sss = profile.colorGrading.settings;
+                sss.basic.postExposure = x;
+                profile.colorGrading.settings = sss;
+            }, 0f, -40f, 2).SetEase(Ease.InCirc);
+
     }
 
     public IEnumerator ReapawnRoutine()
