@@ -7,6 +7,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public enum Facing
+    {
+        Left,
+        Right
+    }
+    public Facing facing = Facing.Right;
+
     public float moveSpeed = 5f; // Speed of movement
     public float jumpForce = 10f; // Jump force
     public float aerialControl = 0.1f;
@@ -74,6 +81,7 @@ public class Player : MonoBehaviour
             }
             if (isGrounded) rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
             else rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(-moveSpeed, rb.velocity.y), aerialControl);
+            facing = Facing.Left;
         }
         else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
@@ -84,6 +92,7 @@ public class Player : MonoBehaviour
             }
             if (isGrounded) rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
             else rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(moveSpeed, rb.velocity.y), aerialControl);
+            facing = Facing.Right;
         }
         else
         {
@@ -166,14 +175,6 @@ public class Player : MonoBehaviour
         strength = strength * 10 + 13;
         Vector2 direction = Vector2.zero;
 
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-        {
-            direction = Vector2.right;
-        }
-        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-        {
-            direction = Vector2.left;
-        }
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
             direction = Vector2.up;
@@ -199,7 +200,7 @@ public class Player : MonoBehaviour
 
         if (direction.y == 0)
         {
-            y = rb.velocity.y + 5;
+            y = rb.velocity.y + 7;
         }
 
         rb.velocity = new Vector2(rb.velocity.x / 2 + direction.x * strength, direction.y * strength + y);
