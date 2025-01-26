@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
@@ -12,6 +13,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     public Facing facing = Facing.Left;
     public float moveSpeed = 5f;
+    public int health = 3;
     
     // Start is called before the first frame update
     void Start()
@@ -22,7 +24,7 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        ShouldDie();
     }
 
     public void Move()
@@ -36,5 +38,15 @@ public class EnemyBehaviour : MonoBehaviour
         {
             transform.position += Vector3.right * moveSpeed * Time.deltaTime;
         }
+    }
+
+    [ContextMenu("Die")]
+    public void ShouldDie()
+    {
+        if(health<=0)
+        {
+            Destroy(transform.parent.gameObject);
+        }
+
     }
 }

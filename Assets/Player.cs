@@ -7,6 +7,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+
+    public GameObject exploading_balloon;
+    
     public enum Facing
     {
         Left,
@@ -18,6 +21,8 @@ public class Player : MonoBehaviour
     public float jumpForce = 10f; // Jump force
     public float aerialControl = 0.1f;
     
+    private GameObject spawnedBalloonInflating = null;
+
     [SerializeField] private float defaultAerialControl = 0.02f;
     [SerializeField] private float defaultGravityScale = 4;
     [SerializeField] private float defaultMoveSpeed = 10;
@@ -27,6 +32,12 @@ public class Player : MonoBehaviour
     private const float explosionStrengthDefault = 5f;
     private float explosionStrength = explosionStrengthDefault;
     public int explosionSize = 0;
+
+    public double bubbleCooldown = 1;
+    private double endTimer = 0;
+    private double bubbleLifetime;
+    public float bubbleProjSpeed = 5;
+    public GameObject bubbleProjPrefab;
 
     [NonSerialized] public Rigidbody2D rb;
     private Animator anim;
@@ -50,6 +61,8 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         ownCapsule = GetComponent<CapsuleCollider2D>();
         gcCapsule = GetComponentInChildren<CircleCollider2D>();
+
+        //bubbleProjPrefab = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -58,6 +71,7 @@ public class Player : MonoBehaviour
         Jump();
         UpdateAnimation();
         ExploadingBalloonPress();
+        BubbleAttackPress();
     }
 
     public float lastSpeed = 0f;
@@ -149,24 +163,59 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.K))
         {
+            if (spawnedBalloonInflating == null)
+            {
+                spawnedBalloonInflating = Instantiate(exploading_balloon, transform.position, transform.rotation);
+            }
+            spawnedBalloonInflating.transform.position = transform.position;
             explosionStrength += Time.deltaTime * 15;
             explosionSize = (int)Math.Ceiling(explosionStrength / 10);
-        }
 
+            float rotationY;
+
+            if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Left"))
+            {
+                rotationY = -180;
+                spawnedBalloonInflating.transform.rotation = Quaternion.Euler(0, rotationY, 0);
+            }
+            else
+            {
+                rotationY = 0;
+                spawnedBalloonInflating.transform.rotation = Quaternion.Euler(0, rotationY, 0);
+            }
+
+            if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+            {
+                spawnedBalloonInflating.transform.rotation = Quaternion.Euler(0, rotationY, 270);
+            }
+            else if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+            {
+                spawnedBalloonInflating.transform.rotation = Quaternion.Euler(0, rotationY, 90);
+            }
+        }
+        
         else if (Input.GetKeyUp(KeyCode.K))
         {
+            explode_balloon();
             ExploadingBalloonDash(explosionSize);
         }
 
         if (explosionSize > 3)
         {
+            explode_balloon();
             ExploadingBalloonDash(explosionSize - 1);
         }
     }
+
+    private void explode_balloon()
+    {
+        Destroy(spawnedBalloonInflating);
+        spawnedBalloonInflating = null;
+    }
     private void ExploadingBalloonDash(int strength)
     {
-        strength = strength * 10 + 13;
-        Vector2 direction = Vector2.zero;
+        strength = strength * 10 + 10;
+        Vector2 direction;
 
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
@@ -199,5 +248,34 @@ public class Player : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x / 2 + direction.x * strength, direction.y * strength + y);
         explosionStrength = explosionStrengthDefault;
         explosionSize = 0;
+    }
+    
+    GameObject spawnedBubbleProj;
+    public void BubbleAttackPress()
+    {
+
+        //Debug.Log($"{Time.timeAsDouble} - {endTimer}");
+        if (bubbleLifetime >= Time.timeAsDouble + 5)
+        {
+            Destroy(spawnedBubbleProj);
+        }
+        if (Input.GetKey(KeyCode.J) && Time.timeAsDouble >= endTimer)
+        {
+            bubbleLifetime = Time.timeAsDouble;
+            if(facing == Facing.Right)
+            {
+                spawnedBubbleProj = (GameObject)Instantiate(bubbleProjPrefab, transform.position + Vector3.right, transform.rotation);
+                spawnedBubbleProj.GetComponentInChildren<Rigidbody2D>().velocity = Vector3.right * bubbleProjSpeed;
+
+            }
+            else
+            {
+                spawnedBubbleProj = (GameObject)Instantiate(bubbleProjPrefab, transform.position + Vector3.left, transform.rotation);
+                spawnedBubbleProj.GetComponentInChildren<Rigidbody2D>().velocity = Vector3.left * bubbleProjSpeed;
+            }
+            
+            this.endTimer = Time.timeAsDouble + bubbleCooldown;
+        }
+        
     }
 }
