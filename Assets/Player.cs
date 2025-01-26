@@ -7,6 +7,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public enum Facing
+    {
+        Left,
+        Right
+    }
+    public Facing facing = Facing.Right;
+
     public float moveSpeed = 5f; // Speed of movement
     public float jumpForce = 10f; // Jump force
     public float aerialControl = 0.1f;
@@ -74,6 +81,7 @@ public class Player : MonoBehaviour
             }
             if (isGrounded) rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
             else rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(-moveSpeed, rb.velocity.y), aerialControl);
+            facing = Facing.Left;
         }
         else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
@@ -84,6 +92,7 @@ public class Player : MonoBehaviour
             }
             if (isGrounded) rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
             else rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(moveSpeed, rb.velocity.y), aerialControl);
+            facing = Facing.Right;
         }
         else
         {
