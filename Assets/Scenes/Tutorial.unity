@@ -179,7 +179,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: J to shoot
+  m_text: 'J to shoot
+
+    K for Explosion Gum'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8df4d8a8585b4e69b8cdb841414b800, type: 2}
   m_sharedMaterial: {fileID: -7224795507044588793, guid: c8df4d8a8585b4e69b8cdb841414b800, type: 2}
