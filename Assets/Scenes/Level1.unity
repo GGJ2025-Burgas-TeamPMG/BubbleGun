@@ -639,6 +639,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facing: 0
   moveSpeed: 5
+  health: 3
 --- !u!1 &1829681842
 GameObject:
   m_ObjectHideFlags: 0
