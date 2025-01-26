@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 5550632571369845108}
   - component: {fileID: 6777413323184308722}
   - component: {fileID: 3127016063891148099}
+  - component: {fileID: 4114180051371412008}
   m_Layer: 0
   m_Name: EnemyBody
   m_TagString: Untagged
@@ -223,6 +224,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b187bca9eff108144b290d323019c143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4114180051371412008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995029814114129331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f10b964b30b04f446aabfe9f37dd0d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bubblePrefab: {fileID: 8366497043273451096, guid: 4785b075172be7043a10aa3011cb78d3, type: 3}
+  scale: {x: 0.3, y: 0.4}
+  velocityY: {x: 3, y: 8}
+  velocityX: {x: -3, y: 3}
+  fade: {x: 1, y: 3}
 --- !u!1 &3676817271178068845
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,6 +454,7 @@ GameObject:
   - component: {fileID: 6902159974188262053}
   - component: {fileID: 6102998191175883620}
   - component: {fileID: 3374457353111587040}
+  - component: {fileID: 8305315807799631476}
   m_Layer: 0
   m_Name: EnemyHead
   m_TagString: Untagged
@@ -558,3 +577,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   headHitDmgMultiplier: 2
+--- !u!114 &8305315807799631476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8115927439607396342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f10b964b30b04f446aabfe9f37dd0d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bubblePrefab: {fileID: 8366497043273451096, guid: 4785b075172be7043a10aa3011cb78d3, type: 3}
+  scale: {x: 0.3, y: 0.4}
+  velocityY: {x: 3, y: 8}
+  velocityX: {x: -3, y: 3}
+  fade: {x: 1, y: 3}
