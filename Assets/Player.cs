@@ -169,13 +169,26 @@ public class Player : MonoBehaviour
             explosionStrength += Time.deltaTime * 15;
             explosionSize = (int)Math.Ceiling(explosionStrength / 10);
 
-            if (facing == Facing.Left)
+            float rotationY;
+
+            if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Left"))
             {
-                spawnedBalloonInflating.transform.rotation = Quaternion.Euler(0, -180, 0);
+                rotationY = -180;
+                spawnedBalloonInflating.transform.rotation = Quaternion.Euler(0, rotationY, 0);
             }
             else
             {
-                spawnedBalloonInflating.transform.position += new Vector3(0, 0, 0);
+                rotationY = 0;
+                spawnedBalloonInflating.transform.rotation = Quaternion.Euler(0, rotationY, 0);
+            }
+
+            if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+            {
+                spawnedBalloonInflating.transform.rotation = Quaternion.Euler(0, rotationY, 270);
+            }
+            else if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+            {
+                spawnedBalloonInflating.transform.rotation = Quaternion.Euler(0, rotationY, 90);
             }
         }
         
@@ -213,7 +226,7 @@ public class Player : MonoBehaviour
 
         else
         {
-            if (Facing.Right == facing)
+            if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Right"))
             {
                 direction = Vector2.left;
             }
