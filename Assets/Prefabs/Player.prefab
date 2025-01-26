@@ -181,7 +181,7 @@ MonoBehaviour:
   jumpingMaterial: {fileID: 6200000, guid: 86c6ab6f65b935047b4f164864632fe2, type: 2}
   explosionSize: 0
   bubbleCooldown: 1
-  bubbleProjSpeed: 8
+  bubbleProjSpeed: 15
   bubbleProjPrefab: {fileID: 1065362772364294390, guid: f620892653d35864aa114b3841c7b17b, type: 3}
   isGrounded: 0
   groundCheckRadius: 0.9

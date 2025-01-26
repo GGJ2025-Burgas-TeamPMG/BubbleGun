@@ -9,8 +9,7 @@ public class End_Level : MonoBehaviour
     {
         if (collision.gameObject == GameManager.player.gameObject)
         {
-            Debug.Log("End Level");
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
         }
 
     }

@@ -2889,9 +2889,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1723589637636006622, guid: 0b5b2092f3f0e424a844ecbbc4f83dea, type: 3}
+      propertyPath: bubbleProjSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1723589637636006622, guid: 0b5b2092f3f0e424a844ecbbc4f83dea, type: 3}
       propertyPath: bubbleProjPrefab
       value: 
       objectReference: {fileID: 1065362772364294390, guid: f620892653d35864aa114b3841c7b17b, type: 3}
+    - target: {fileID: 1723589637636006622, guid: 0b5b2092f3f0e424a844ecbbc4f83dea, type: 3}
+      propertyPath: exploading_balloon
+      value: 
+      objectReference: {fileID: 4515644390155942813, guid: 3df9b66049288204a96495992c60fe92, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
