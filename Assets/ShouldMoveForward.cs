@@ -32,7 +32,7 @@ public class ShouldMoveForward : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        platformScript = null;
+        //platformScript = null;
         transform.parent.Rotate(0, 180, 0);
         if(parentScript.facing == EnemyBehaviour.Facing.Left)
         {
